@@ -49,4 +49,4 @@ po/*~
 rsconnect/
 
 # Large satelite file
-\data\raw\land_1m.asc
+/data/raw/land_1m.asc
