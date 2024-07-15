@@ -1,0 +1,13 @@
+Project: "Cost of living together: direct and indirect factors underlying queen reproductive output in polygynous ant colonies"
+
+Raster file of the Mogi-Guaçi Biological reserve, where data was collected. Satellite images were retrieved in AAAA-MM-DD.
+This raster contains seven categories of land-cover which are extracted in the "data_preparation.R" script and added onto processed data files, using the following names:
+
+agr: Total area of agriculture in the reserve
+cer: Total area of Cerrado in the reserve
+cers: Total area of Cerrado in the reserve
+cult: Total area of Pinus sp. and Eculapitus sp. plantations in the reserve
+wtr: Total area of Water bodies in the reserve
+urb: Total area of urban areas in the reserve
+road: Total area of roads in the reserve
+cert: Total area of Cerrado (summed Cerrado and Cerradão) in the reserve

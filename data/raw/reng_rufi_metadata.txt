@@ -1,0 +1,17 @@
+Datasets: Data used for these analyses were obtained from REF (ANO) (Date of data collection: 2014/12 - 2015/01). Raw datasets are in '.csv' format. Each dataset contains a multitude of information regarding samples (each row is a ant queen). Below are the file names and their respective species, as well as column ids, and what each one represents.
+data_rufi.csv: Camponotus rufipes
+data_reng.csv: Camponotus renggeri
+
+Column name:
+nest: Sampled nest ID
+sampleid: Sampled ant (worker) ID
+latitude: Nest location latitude
+longitude: Nest location longitude
+nw: Number of workers sampled per nest
+nq: Number of queens per nest (estimated using COLONY 2.0)
+efq: Efective number of queens per nest (estimated using COLONY 2.0)
+nm: Number of male mates per queen (estimated using COLONY 2.0)
+efm: Efective number of male mates per queen (estimated using COLONY 2.0)
+nf: Number of offspring (workers) belonging to each queen
+nfp: Propotion of offspring (workers) belonging to each queen
+All columns starting with 'Cru' or 'Cgg': Alelle pair of different loci

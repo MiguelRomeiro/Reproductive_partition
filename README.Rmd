@@ -39,7 +39,7 @@ Data used for these analyses were obtained from REF (ANO). Raw datasets are in '
 From the raw data, additional colums were generated. Heterozygosity measures were calculated using the GENHET function (REF).
 
 | Column ID | Description                                                                      |
-|-----------|----------------------------------------------------------------------------------|
+|--------------|----------------------------------------------------------|
 | PHt       | Proportion of heterozigous loci in an individual                                 |
 | Hs_obs    | Standardized heterozygosity based on the mean observed heterozygosity            |
 | Hs_exp    | Standardized heterozygosity based on the mean expected heterozygosity            |
