@@ -1,0 +1,55 @@
+---
+title: "Reproductive output analysis"
+output: github_document
+---
+
+## Project description
+
+Data and file overview of research project "Cost of living together: direct and indirect factors underlying queen reproductive output in polygynous ant colonies".
+
+**Manuscript is currently under preparation.**
+
+### Raw data description
+
+Data used for these analyses were obtained from REF (ANO). Raw datasets are in '.csv' format. Each dataset contains a multitude of information regarding samples (each row is a ant queen). Below are the file names and their respective species, as well as column ids, and what each one represents.
+
+-   **data_rufi.csv:** *Camponotus rufipes* (Date of data collection: 2014/12 - 2015/01)
+
+-   **data_reng.csv:** *Camponotus renggeri* (Date of data collection: 2014/12 - 2015/01)
+
+-   **land_1m.asc:** Raw raster file of the Mogi-Guaçi Biological reserve, where data was collected.
+
+| Column ID                                | Description                                                            |
+|---------------------------|---------------------------------------------|
+| nest                                     | Sampled nest ID                                                        |
+| sampleid                                 | Sampled ant (worker) ID                                                |
+| latitude                                 | Nest location latitude                                                 |
+| longitude                                | Nest location longitute                                                |
+| nw                                       | Number of workers sampled per nest                                     |
+| nq                                       | Number of queens per nest (estimated using COLONY 2.0)                 |
+| efq                                      | Effective number of queens per nest (estimated using COLONY 2.0)       |
+| nm                                       | Number of males mater per queen (estimated using COLONY 2.0)           |
+| efm                                      | Effective number of males mater per queen (estimated using COLONY 2.0) |
+| nf                                       | Number of offspring (workers) belonging to each queen                  |
+| nfp                                      | Proportion of offspring (workers) belonging to each queen              |
+| All columns starting with 'Cru' or 'Cgg' | Allele pair of different loci                                          |
+
+### Processed data description
+
+From the raw data, additional colums were generated. Heterozygosity measures were calculated using the GENHET function (REF).
+
+| Column ID | Description                                                                      |
+|-----------|----------------------------------------------------------------------------------|
+| PHt       | Proportion of heterozigous loci in an individual                                 |
+| Hs_obs    | Standardized heterozygosity based on the mean observed heterozygosity            |
+| Hs_exp    | Standardized heterozygosity based on the mean expected heterozygosity            |
+| IR        | Internal relatedness                                                             |
+| HL        | Homozygosityby locus                                                             |
+| agr       | Total area of agriculture in the area surrounding nest                           |
+| cer       | Total area of Cerrado in the area surrounding nest                               |
+| cers      | Total area of Cerrado in the area surrounding nest                               |
+| cult      | Total area of *Pinus* sp. and *Eucaliptus* sp. in the area surrounding nest      |
+| wtr       | Total area of water bodies in the area surrounding nest                          |
+| urb       | Total area of urban areas in the area surrounding nest                           |
+| road      | Total area of roads in the area surrounding nest                                 |
+| cert      | Total area of Cerrado (summed Cerrado and Cerradão) in the area surrounding nest |
