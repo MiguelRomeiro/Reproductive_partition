@@ -4,14 +4,15 @@
 
 # Calculate heterozygosity measures for samples specimens
 # Calculate land cover around sampled nests
-# Generate processed data files as outputs (already available at ~/data/processed/)
+# Generate processed data files as outputs to be used in subsequent analyses (already available at ~/data/processed/ as reng_processed.csv and rufi_processed.csv)
+# Conduct some extra diagnostics of the data
 
-## Developed by Miguel P. Pereira-Romeiro
-# Authors: Miguel P. Pereira-Romeiro, Marianne Azevedo-Silva, Henrique Silva Florindo, Gustavo Maruyama Mori, Paulo Silva Oliveira, Anette
+# Code developed by Miguel P. Pereira-Romeiro
+# Manuscript authors: Miguel P. Pereira-Romeiro, Marianne Azevedo-Silva, Henrique Silva Florindo, Gustavo Maruyama Mori, Paulo Silva Oliveira, Anette
 
 # Install required packages
 
-packages <- c("raster", "rgeos", "piecewiseSEM", "ggplot2", "dplyr", "car", "DHARMa", "performance", "gtools", "corrplot", "effectsize")
+packages <- c("raster", "dplyr", "gtools", "corrplot")
 
 # Loop through the vector and install each package
 for (pkg in packages) {
@@ -22,33 +23,13 @@ for (pkg in packages) {
 }
 
 install.packages("raster")
-install.packages("rgeos")
-install.packages("piecewiseSEM")
-install.packages("terra")
-# installed.packages("ggplot2")
-# install.packages("dplyr")
-# install.packages("car")
-# install.packages("DHARMa")
-# install.packages("performance")
-# install.packages("gtools")
-# install.packages("corrplot")
-# install.packages("effectsize")
-# install.packages("renv")
 
 #Load required packages
 
 library(raster)
-library(rgeos)
-library(piecewiseSEM)
-library(ggplot2)
 library(dplyr)
-library(car)
-library(DHARMa)
-library(performance)
-library(gtools)
 library(corrplot)
 library(renv)
-library(terra)
 
 #### Loading Data ####
 
@@ -226,11 +207,6 @@ data_reng[,c(49:53)] <- as.numeric(unlist(data_reng[,c(49:53)]))
 coord_rufi <- SpatialPoints(unique(data_rufi[,c(4,3)])) #longitude has to come before latitude
 coord_reng <- SpatialPoints(unique(data_reng[,c(4,3)])) #longitude has to come before latitude
 
-# plot(landuse)
-# points(coord_rufi, col = as.factor(data_reng$nq), pch = 16)
-# points(coord_reng, col = as.factor(data_reng$nq), pch = 17)
-# table(values(landuse))
-
 ## C. rufipes ##
 
 result_ru=matrix(NA, nrow = length(unique(data_rufi$nest)), ncol = 7)
@@ -334,5 +310,3 @@ corrplot(cor_rufi, p.mat = test_rufi$p, method = 'color', type = 'lower', addCoe
 cor_reng <- cor(data_reng[,c(6,8,14,49,61)])
 test_reng = cor.mtest(data_reng[,c(6,8,14,49,61)], conf.level = 0.95)
 corrplot(cor_reng, p.mat = test_reng$p, method = 'color', type = 'lower', addCoef.col ='black', number.cex = 1.5, cl.cex = 1, order = 'alphabet', diag=FALSE, main="Camponotus renggeri")
-
-#CRIAR CSV --> DADOS PROCESSADOS

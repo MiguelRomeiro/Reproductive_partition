@@ -7,6 +7,27 @@
 # Authors: Miguel Pereira-Romeiro, Marianne Azevedo-Silva, Henrique Silva Florindo, Gustavo Maruyama Mori, Paulo Silva Oliveira, Anette
 
 
+# install.packages("raster")
+# install.packages("rgeos")
+# install.packages("piecewiseSEM")
+# install.packages("terra")
+# installed.packages("ggplot2")
+# install.packages("dplyr")
+# install.packages("car")
+# install.packages("DHARMa")
+# install.packages("performance")
+# install.packages("gtools")
+# install.packages("corrplot")
+# install.packages("effectsize")
+# install.packages("renv")
+
+##
+#Image generation
+# plot(landuse)
+# points(coord_rufi, col = as.factor(data_reng$nq), pch = 16)
+# points(coord_reng, col = as.factor(data_reng$nq), pch = 17)
+# table(values(landuse))
+
 #### Bivariate Analysis ####  POSSÍVELMENTE REMOVER
 
 # summary(glm(nfp ~ nq, family=binomial , weight = nw , data = data_rufi))
