@@ -34,7 +34,6 @@ library(renv)
 #### Loading Data ####
 
 landuse <- raster("~/Pesquisa/Reproductive_partition/data/raw/land_1m.asc")
-landuse1 <- rast("~/Pesquisa/Reproductive_partition/data/raw/land_1m.asc")
 
 data_rufi <- read.csv("~/Pesquisa/Reproductive_partition/data/raw/data_rufi.csv",sep =",", head=T)
 data_rufi[,c(3,4, 12:length(data_rufi))] <- as.numeric(unlist(data_rufi[,c(3,4,12:length(data_rufi))]))
