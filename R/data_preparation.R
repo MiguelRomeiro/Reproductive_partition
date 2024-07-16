@@ -4,15 +4,27 @@
 
 # Calculate heterozygosity measures for samples specimens
 # Calculate land cover around sampled nests
+# Generate processed data files as outputs (already available at ~/data/processed/)
 
 ## Developed by Miguel P. Pereira-Romeiro
 # Authors: Miguel P. Pereira-Romeiro, Marianne Azevedo-Silva, Henrique Silva Florindo, Gustavo Maruyama Mori, Paulo Silva Oliveira, Anette
 
 # Install required packages
 
-# install.packages("raster")
-# install.packages("rgeos")
-# install.packages("piecewiseSEM")
+packages <- c("raster", "rgeos", "piecewiseSEM", "ggplot2", "dplyr", "car", "DHARMa", "performance", "gtools", "corrplot", "effectsize")
+
+# Loop through the vector and install each package
+for (pkg in packages) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg, dependencies = TRUE)
+    library(pkg, character.only = TRUE)
+  }
+}
+
+install.packages("raster")
+install.packages("rgeos")
+install.packages("piecewiseSEM")
+install.packages("terra")
 # installed.packages("ggplot2")
 # install.packages("dplyr")
 # install.packages("car")
@@ -36,30 +48,21 @@ library(performance)
 library(gtools)
 library(corrplot)
 library(renv)
+library(terra)
 
 #### Loading Data ####
 
-setwd("C:/Users/LBPN/Documents/Miguel/Reproductive_partitioning/Data")
+landuse <- raster("~/Pesquisa/Reproductive_partition/data/raw/land_1m.asc")
+landuse1 <- rast("~/Pesquisa/Reproductive_partition/data/raw/land_1m.asc")
 
-landuse <- raster("land_1m.asc")
-
-data_rufi <- read.csv("data_rufi.csv",sep =",", head=T)
-data_rufi[,c(3,4, 12:45)] <- as.numeric(unlist(data_rufi[,c(3,4,12:45)]))
+data_rufi <- read.csv("~/Pesquisa/Reproductive_partition/data/raw/data_rufi.csv",sep =",", head=T)
+data_rufi[,c(3,4, 12:length(data_rufi))] <- as.numeric(unlist(data_rufi[,c(3,4,12:length(data_rufi))]))
 str(data_rufi)
 
-data_reng <- read.csv("data_reng.csv",sep =",", head=T)
-data_reng[,c(3,4, 12:45)] <- as.numeric(unlist(data_reng[,c(3,4,12:45)]))
+data_reng <- read.csv("~/Pesquisa/Reproductive_partition/data/raw/data_reng.csv",sep =",", head=T)
+data_reng[,c(3,4, 12:length(data_reng))] <- as.numeric(unlist(data_reng[,c(3,4,12:length(data_reng))]))
 str(data_reng)
 
-## Correlation of Variables ##
-
-cor_rufi <- cor(data_rufi[,c(6,8,14,49,61)])
-test_rufi = cor.mtest(data_rufi[,c(6,8,14,49,61)], conf.level = 0.95)
-corrplot(cor_rufi, p.mat = test_rufi$p, method = 'color', type = 'lower', addCoef.col ='black', number.cex = 1.5, cl.cex = 1, order = 'alphabet', diag=FALSE, main="Camponotus rufipes")
-
-cor_reng <- cor(data_reng[,c(6,8,14,49,61)])
-test_reng = cor.mtest(data_reng[,c(6,8,14,49,61)], conf.level = 0.95)
-corrplot(cor_reng, p.mat = test_reng$p, method = 'color', type = 'lower', addCoef.col ='black', number.cex = 1.5, cl.cex = 1, order = 'alphabet', diag=FALSE, main="Camponotus renggeri")
 
 #### Calculating Heterozigosity ####
 
@@ -273,6 +276,8 @@ buffer_ru
 
 data_rufi<-merge(data_rufi, buffer_ru, by = "nest")
 
+write.csv(data_rufi, file = "~/Pesquisa/Reproductive_partition/data/processed/rufi_processed.csv", row.names = FALSE)
+
 ## C. rengerii ##
 
 result_re=matrix(NA, nrow = length(unique(data_reng$nest)), ncol = 7)
@@ -318,6 +323,16 @@ buffer_re
 
 data_reng<-merge(data_reng, buffer_re, by = "nest")
 
+write.csv(data_reng, file = "~/Pesquisa/Reproductive_partition/data/processed/reng_processed.csv", row.names = FALSE)
 
+## Correlation of Variables ##
+
+cor_rufi <- cor(data_rufi[,c(6,8,14,49,61)])
+test_rufi = cor.mtest(data_rufi[,c(6,8,14,49,61)], conf.level = 0.95)
+corrplot(cor_rufi, p.mat = test_rufi$p, method = 'color', type = 'lower', addCoef.col ='black', number.cex = 1.5, cl.cex = 1, order = 'alphabet', diag=FALSE, main="Camponotus rufipes")
+
+cor_reng <- cor(data_reng[,c(6,8,14,49,61)])
+test_reng = cor.mtest(data_reng[,c(6,8,14,49,61)], conf.level = 0.95)
+corrplot(cor_reng, p.mat = test_reng$p, method = 'color', type = 'lower', addCoef.col ='black', number.cex = 1.5, cl.cex = 1, order = 'alphabet', diag=FALSE, main="Camponotus renggeri")
 
 #CRIAR CSV --> DADOS PROCESSADOS
