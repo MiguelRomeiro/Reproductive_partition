@@ -59,9 +59,17 @@ Structural Equation Models (SEM). Scripts were developed using R.
 The user can download this repo to a local folder in your computer or
 clone it.
 
-Using github from command line:
+To clone using github from command line:
+
+``` r
+git clone https://github.com/MiguelRomeiro/Reproductive_partition.git your_repo_title
+```
 
 To download using R:
+
+``` r
+download.file(url = "https://github.com/MiguelRomeiro/Reproductive_partition/archive/main.zip", destfile = "Reproductive_partition.zip")
+```
 
 ## Setting up working environment with `renv`
 
