@@ -1,5 +1,7 @@
 ---
 title: "Reproductive output analysis"
+author: "Miguel Pereira-Romeiro"
+date: "`r Sys.Date()`"
 output: github_document
 ---
 
@@ -29,8 +31,27 @@ This repository contains the data and files used in the manuscript entitled "Cos
 
 ### Repository download and setup
 
+## Download
+
 The user can download this repo to a local folder in your computer or clone it.
 
 Using github from command line:
 
 To download using R:
+
+## Setting up working environment with `renv`
+
+The `renv` package sets up your R environment with specific package versions to ensure that the code is fully reproducible. This achieved by havin both the folder `renv` and the file `renv.lock` in your root directory. In order to use it first install it normally using:
+
+```{r echo=TRUE, eval=FALSE}
+intall.packages("renv")
+library(renv)
+```
+
+Finally, update your environment using:
+
+```{r echo=TRUE, eval=FALSE}
+renv::restore()
+```
+
+This will load packages from the `renv.lock` file with their respective versions. The environment is now set up for work!
